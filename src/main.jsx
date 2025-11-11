@@ -19,6 +19,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/allcourse",
+        loader: ()=> fetch('http://localhost:3000/courses'),
         Component: AllCourse,
       },
     ],
