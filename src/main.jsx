@@ -7,6 +7,7 @@ import { RouterProvider } from "react-router/dom";
 import Root from "./root/Root.jsx";
 import Home from "./pages/Home.jsx";
 import AllCourse from "./pages/AllCourse/AllCourse.jsx";
+import CourseDetails from "./pages/CourseDetails/CourseDetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -19,8 +20,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/allcourse",
-        loader: ()=> fetch('http://localhost:3000/courses'),
+        loader: () => fetch("http://localhost:3000/courses"),
         Component: AllCourse,
+      },
+      {
+        path: "/course-details/:id",
+        Component: CourseDetails,
       },
     ],
   },

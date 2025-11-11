@@ -7,7 +7,7 @@ const AllCourse = () => {
     // console.log(courses);
     return (
         <div>
-            <h2><span className='font-semibold'>Total Course :</span> {courses.length}</h2>
+            <h2 className='text-center p-2'><span className='font-semibold'>Total Course :</span> {courses.length}</h2>
             <div className='max-w-7xl mx-auto my-7 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
                 {
                     courses.map(course => <CourseCard key={course._id} course={course}></CourseCard>)
