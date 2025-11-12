@@ -1,16 +1,18 @@
-import React from "react";
-import { useLocation } from "react-router";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const CourseDetails = () => {
-  const { state } = useLocation();
-
-  const course = state?.course; // course data passed from navigate
-
-  if (!course) {
-    return (
-      <div className="text-center mt-20 text-xl">Loading course details...</div>
-    );
-  }
+  const { id } = useParams();
+  // console.log("ID is", id);
+  const [course, setCourse] = useState({});
+  const axiosSecure = useAxiosSecure();
+  useEffect(() => {
+    axiosSecure.get(`/course-details/${id}`).then((data) => {
+      setCourse(data.data);
+      // console.log(data.data);
+    });
+  }, [id, axiosSecure]);
 
   return (
     <div className="max-w-4xl mx-auto my-20 p-6 bg-base-200 rounded-xl shadow-lg">

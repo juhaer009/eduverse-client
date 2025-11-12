@@ -8,6 +8,11 @@ import Root from "./root/Root.jsx";
 import Home from "./pages/Home.jsx";
 import AllCourse from "./pages/AllCourse/AllCourse.jsx";
 import CourseDetails from "./pages/CourseDetails/CourseDetails.jsx";
+import LogIn from "./pages/LogIn/LogIn.jsx";
+import Register from "./pages/Register/Register.jsx";
+import AuthProvider from "./Provider/AuthProvider.jsx";
+import PrivateRoute from "./Provider/PrivateRoute.jsx";
+import { ToastContainer } from "react-toastify";
 
 const router = createBrowserRouter([
   {
@@ -25,7 +30,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/course-details/:id",
-        Component: CourseDetails,
+        element: <PrivateRoute><CourseDetails></CourseDetails></PrivateRoute>,
+      },
+      {
+        path: "/login",
+        Component: LogIn,
+      },
+      {
+        path: "/register",
+        Component: Register,
       },
     ],
   },
@@ -33,6 +46,9 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <ToastContainer />
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>
 );

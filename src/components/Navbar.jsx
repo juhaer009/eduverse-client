@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router";
-import logo from '../assets/eduverse-logo.png'
+import logo from "../assets/eduverse-logo.png";
+import { AuthContext } from "../Provider/AuthProvider";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    // console.log("user trying to log out")
+    logOut()
+      .then(() => {
+        toast("You Logged Out Successfully");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   const links = (
     <>
       <li>
@@ -48,8 +61,20 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end mr-3">
-        <Link className="btn btn-primary mr-3">Log In</Link>
-        <Link className="btn btn-primary">Sign Up</Link>
+        {user ? (
+          <button onClick={handleLogOut} className="btn btn-primary px-10">
+            LogOut
+          </button>
+        ) : (
+          <>
+            <Link to="/login" className="btn btn-primary mr-3">
+              Log In
+            </Link>
+            <Link to="/register" className="btn btn-primary">
+              Sign Up
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );
