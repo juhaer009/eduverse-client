@@ -8,6 +8,7 @@ import {
 } from "react-icons/fa";
 import logo from "../../assets/eduverse-logo.png";
 import { Link } from "react-router";
+import { AiFillSafetyCertificate } from "react-icons/ai";
 
 const Banner = ({
   title = "Learn at your pace, succeed everywhere.",
@@ -72,7 +73,7 @@ const Banner = ({
                 <FaClock className="mr-2" /> Self-paced
               </span>
               <span className="badge badge-sm bg-white/10 border-white/20">
-                <FaCertificate className="mr-2" /> Certificate
+                <AiFillSafetyCertificate className="mr-2" /> Certificate
               </span>
             </div>
           </div>
