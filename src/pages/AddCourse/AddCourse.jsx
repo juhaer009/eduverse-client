@@ -1,14 +1,46 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const AddCourse = () => {
   const { user } = useContext(AuthContext);
+  const axiosSecure = useAxiosSecure();
+  const handleAddCourse = (e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const photo = e.target.photo.value;
+    const courseTitle = e.target.title.value;
+    const courseImage = e.target.courseImage.value;
+    const price = parseFloat(e.target.price.value);
+    const duration = e.target.duration.value;
+    const category = e.target.category.value;
+    const description = e.target.description.value;
+
+    const newCourse = {
+      name,
+      email,
+      photo,
+      courseTitle,
+      courseImage,
+      price,
+      duration,
+      category,
+      description,
+    };
+    // console.log(newCourse);
+    axiosSecure.post("/courses", newCourse).then((data) => {
+      console.log("after adding course", data.data);
+    });
+  };
   return (
     <div>
-      <h2 className="font-semibold text-secondary text-center text-4xl mt-6">Add a Course</h2>
+      <h2 className="font-semibold text-secondary text-center text-4xl mt-6">
+        Add a Course
+      </h2>
       <div className=" flex justify-center items-center my-15">
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-          <form className="card-body">
+          <form onSubmit={handleAddCourse} className="card-body">
             <fieldset className="fieldset">
               {/* name */}
               <label className="label">Name</label>
