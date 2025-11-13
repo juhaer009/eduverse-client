@@ -26,6 +26,19 @@ const Navbar = () => {
       </li>
     </>
   );
+  const privateLinks = (
+    <>
+      <li>
+        <NavLink to="/">Home</NavLink>
+      </li>
+      <li>
+        <NavLink to="/allcourse">All Courses</NavLink>
+      </li>
+      <li>
+        <Link to="/addcourse">Add a course</Link>
+      </li>
+    </>
+  );
   return (
     <div className="navbar bg-base-100 shadow-sm">
       <div className="navbar-start">
@@ -51,14 +64,16 @@ const Navbar = () => {
             tabIndex="-1"
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
-            {links}
+            {user ? privateLinks : links}
           </ul>
         </div>
         <img src={logo} className="w-15 h-15 rounded-2xl" alt="Eduverse logo" />
         <a className="btn btn-ghost text-xl text-secondary">Eduverse</a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{links}</ul>
+        <ul className="menu menu-horizontal px-1">
+          {user ? privateLinks : links}
+        </ul>
       </div>
       <div className="navbar-end mr-3">
         {user ? (
