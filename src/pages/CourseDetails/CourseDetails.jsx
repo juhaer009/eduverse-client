@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { Link, useParams } from "react-router";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const CourseDetails = () => {
@@ -30,6 +30,7 @@ const CourseDetails = () => {
       <div className="mt-3 text-sm text-gray-500">
         Duration: {course.duration}
       </div>
+      <Link className="badge badge-primary text-xl font-semibold p-4" to="/">Go Back</Link>
     </div>
   );
 };
