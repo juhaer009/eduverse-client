@@ -49,6 +49,12 @@ const MyCourseCard = ({ course, onDelete }) => {
             >
               Delete Course
             </button>
+            <Link
+              to={`/update-course/${course._id}`}
+              className="btn btn-primary text-white"
+            >
+              Update Course
+            </Link>
           </div>
         </div>
       </div>

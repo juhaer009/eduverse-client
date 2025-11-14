@@ -16,6 +16,7 @@ import { ToastContainer } from "react-toastify";
 import AddCourse from "./pages/AddCourse/AddCourse.jsx";
 import MyCourse from "./pages/MyCourse/MyCourse.jsx";
 import MyCourseDetails from "./pages/MyCourseDetails/MyCourseDetails.jsx";
+import UpdateCourse from "./pages/UpdateCourse/UpdateCourse.jsx";
 
 const router = createBrowserRouter([
   {
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
         path: "/mycourse-details/:id",
         Component: MyCourseDetails,
       },
+      {
+        path: "/update-course/:id",
+        Component: UpdateCourse,
+      }
     ],
   },
 ]);

@@ -1,16 +1,20 @@
-import React, { useContext } from "react";
-import { AuthContext } from "../../Provider/AuthProvider";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { toast } from "react-toastify";
 
-const AddCourse = () => {
-  const { user } = useContext(AuthContext);
+const UpdateCourse = () => {
+  const { id } = useParams();
   const axiosSecure = useAxiosSecure();
-  const handleAddCourse = (e) => {
+  const [course, setCourse] = useState([]);
+  //   console.log("update course id", id);
+  useEffect(() => {
+    axiosSecure.get(`/course-details/${id}`).then((res) => {
+      setCourse(res.data);
+    });
+  }, [axiosSecure, id]);
+  const handleUpdateCourse = (e) => {
     e.preventDefault();
-    const name = e.target.name.value;
-    const email = e.target.email.value;
-    const photo = e.target.photo.value;
     const courseTitle = e.target.title.value;
     const courseImage = e.target.courseImage.value;
     const price = parseFloat(e.target.price.value);
@@ -18,10 +22,7 @@ const AddCourse = () => {
     const category = e.target.category.value;
     const description = e.target.description.value;
 
-    const newCourse = {
-      name,
-      email,
-      photo,
+    const updateCourse = {
       courseTitle,
       courseImage,
       price,
@@ -29,53 +30,23 @@ const AddCourse = () => {
       category,
       description,
     };
-    // console.log(newCourse);
-    axiosSecure.post("/courses", newCourse).then((data) => {
-      // console.log("after adding course", data.data);
-      if (data.data.insertedId) {
-        toast("Course added Successfuly!!");
+    axiosSecure.patch(`/courses/${id}`, updateCourse).then((res) => {
+      //   console.log("after updating course", data.data);
+      if (res.data.acknowledged) {
+        toast("Course updated Successfuly!!");
+        // e.target.reset();
       }
     });
   };
   return (
     <div>
       <h2 className="font-semibold text-secondary text-center text-4xl mt-6">
-        Add a Course
+        Update Course
       </h2>
       <div className=" flex justify-center items-center my-15">
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-          <form onSubmit={handleAddCourse} className="card-body">
+          <form onSubmit={handleUpdateCourse} className="card-body">
             <fieldset className="fieldset">
-              {/* name */}
-              <label className="label">Name</label>
-              <input
-                type="text"
-                name="name"
-                className="input"
-                placeholder="Name"
-                defaultValue={user.displayName}
-                readOnly
-              />
-              {/* email */}
-              <label className="label">Email</label>
-              <input
-                type="email"
-                name="email"
-                className="input"
-                placeholder="Email"
-                defaultValue={user.email}
-                readOnly
-              />
-              {/* photoURL */}
-              <label className="label">Photo URL</label>
-              <input
-                type="text"
-                name="photo"
-                className="input"
-                placeholder="Photo URL"
-                defaultValue={user.photoURL}
-                readOnly
-              />
               {/* course title */}
               <label className="label">Course Title</label>
               <input
@@ -83,6 +54,7 @@ const AddCourse = () => {
                 name="title"
                 className="input"
                 placeholder="Course Title"
+                defaultValue={course.courseTitle}
                 required
               />
               {/* course image */}
@@ -101,6 +73,7 @@ const AddCourse = () => {
                 name="price"
                 className="input"
                 placeholder="Course Price"
+                defaultValue={course.price}
                 required
               />
               {/* duration */}
@@ -110,6 +83,7 @@ const AddCourse = () => {
                 name="duration"
                 className="input"
                 placeholder="Course Duration"
+                defaultValue={course.duration}
                 required
               />
               {/* category */}
@@ -119,6 +93,7 @@ const AddCourse = () => {
                 name="category"
                 className="input"
                 placeholder="Course Category"
+                defaultValue={course.category}
                 required
               />
               {/* description */}
@@ -128,9 +103,10 @@ const AddCourse = () => {
                 name="description"
                 className="input"
                 placeholder="Course Description"
+                defaultValue={course.description}
                 required
               />
-              <button className="btn btn-primary mt-4">Add Course</button>
+              <button className="btn btn-primary mt-4">Update Course</button>
             </fieldset>
           </form>
         </div>
@@ -139,4 +115,4 @@ const AddCourse = () => {
   );
 };
 
-export default AddCourse;
+export default UpdateCourse;
