@@ -14,6 +14,8 @@ import AuthProvider from "./Provider/AuthProvider.jsx";
 import PrivateRoute from "./Provider/PrivateRoute.jsx";
 import { ToastContainer } from "react-toastify";
 import AddCourse from "./pages/AddCourse/AddCourse.jsx";
+import MyCourse from "./pages/MyCourse/MyCourse.jsx";
+import MyCourseDetails from "./pages/MyCourseDetails/MyCourseDetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +50,14 @@ const router = createBrowserRouter([
       {
         path: "/addcourse",
         Component: AddCourse,
+      },
+      {
+        path: "/mycourse",
+        Component: MyCourse,
+      },
+      {
+        path: "/mycourse-details/:id",
+        Component: MyCourseDetails,
       },
     ],
   },

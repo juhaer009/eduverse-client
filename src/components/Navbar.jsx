@@ -37,6 +37,9 @@ const Navbar = () => {
       <li>
         <Link to="/addcourse">Add a course</Link>
       </li>
+      <li>
+        <Link to="/mycourse">My course</Link>
+      </li>
     </>
   );
   return (
