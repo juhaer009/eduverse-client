@@ -14,6 +14,11 @@ const MyCourse = () => {
         setCourses(data.data);
       });
   }, [axiosSecure, user]);
+  const handleDeleteFromUI = (id) => {
+    const filtered = courses.filter((course) => course._id !== id);
+    setCourses(filtered);
+  };
+
   return (
     <div>
       <div className="flex justify-center items-center">
@@ -25,7 +30,11 @@ const MyCourse = () => {
       </div>
       <div className="max-w-7xl mx-auto my-7 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {courses.map((course) => (
-          <MyCourseCard key={course._id} course={course}></MyCourseCard>
+          <MyCourseCard
+            key={course._id}
+            course={course}
+            onDelete={handleDeleteFromUI}
+          ></MyCourseCard>
         ))}
       </div>
     </div>
