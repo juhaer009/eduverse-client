@@ -1,16 +1,59 @@
-# React + Vite
+# 🌌 Eduverse – Modern Online Learning Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Eduverse is a beautifully designed **online learning platform** built with React, TailwindCSS v4, DaisyUI, MongoDB, and Firebase Authentication.  
+It offers a smooth user experience with modern animations, dark/light themes, a dynamic dashboard, and full CRUD course management.
 
-Currently, two official plugins are available:
+This project demonstrates clean architecture, reusable components, secure API handling, and production-ready UI patterns.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Core Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 📚 Course Management (Full CRUD)
+- ➕ **Add Course**
+- ✏️ **Update Course**
+- ❌ **Delete Course** *(instant UI update without page reload)*
+- 👁️ **View Course Details** *(protected with Firebase authentication)*
 
-## Expanding the ESLint configuration
+### 🔐 Authentication
+- Firebase authentication  
+- Protected routes  
+- Course details visible only for logged-in users  
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 🗄️ Database & API
+- MongoDB for storing and fetching all course data  
+- Secure Axios instance with interceptors  
+- REST-based API integration  
+
+### 🌓 Theming & UI
+- Light/Dark **theme toggling**
+- Custom DaisyUI theme styling  
+- TailwindCSS v4 for modern utility-first UI  
+- Framer Motion animations for smooth card hover effects  
+- Fully responsive UI  
+
+### 🎭 User Experience
+- Dynamic page titles using **React Helmet Async**
+- Animated components  
+- Clean, intuitive layout  
+
+---
+
+## 🛠️ Tech Stack
+
+### **Frontend**
+- React  
+- Vite  
+- TailwindCSS v4  
+- DaisyUI v4  
+- Framer Motion  
+- React Router  
+- React Helmet Async  
+- Axios Secure  
+
+### **Backend**
+- Node.js  
+- Express  
+- MongoDB  
+
+---

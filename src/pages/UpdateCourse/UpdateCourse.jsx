@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet-async";
 
 const UpdateCourse = () => {
   const { id } = useParams();
@@ -15,16 +16,16 @@ const UpdateCourse = () => {
   }, [axiosSecure, id]);
   const handleUpdateCourse = (e) => {
     e.preventDefault();
-    const courseTitle = e.target.title.value;
-    const courseImage = e.target.courseImage.value;
+    const title = e.target.title.value;
+    const image = e.target.courseImage.value;
     const price = parseFloat(e.target.price.value);
     const duration = e.target.duration.value;
     const category = e.target.category.value;
     const description = e.target.description.value;
 
     const updateCourse = {
-      courseTitle,
-      courseImage,
+      title,
+      image,
       price,
       duration,
       category,
@@ -40,6 +41,13 @@ const UpdateCourse = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Update Course</title>
+        <meta
+          name=""
+          content=""
+        />
+      </Helmet>
       <h2 className="font-semibold text-secondary text-center text-4xl mt-6">
         Update Course
       </h2>
@@ -54,7 +62,7 @@ const UpdateCourse = () => {
                 name="title"
                 className="input"
                 placeholder="Course Title"
-                defaultValue={course.courseTitle}
+                defaultValue={course.title}
                 required
               />
               {/* course image */}

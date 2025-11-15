@@ -17,6 +17,8 @@ import AddCourse from "./pages/AddCourse/AddCourse.jsx";
 import MyCourse from "./pages/MyCourse/MyCourse.jsx";
 import MyCourseDetails from "./pages/MyCourseDetails/MyCourseDetails.jsx";
 import UpdateCourse from "./pages/UpdateCourse/UpdateCourse.jsx";
+import { HelmetProvider } from "react-helmet-async";
+import Error from "./pages/Error/Error.jsx";
 
 const router = createBrowserRouter([
   {
@@ -63,16 +65,22 @@ const router = createBrowserRouter([
       {
         path: "/update-course/:id",
         Component: UpdateCourse,
-      }
+      },
     ],
+  },
+  {
+    path: "/*",
+    Component: Error,
   },
 ]);
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <AuthProvider>
-      <ToastContainer />
+  // <StrictMode>
+  <AuthProvider>
+    <ToastContainer />
+    <HelmetProvider>
       <RouterProvider router={router} />
-    </AuthProvider>
-  </StrictMode>
+    </HelmetProvider>
+  </AuthProvider>
+  // </StrictMode>
 );

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const MyCourseDetails = () => {
   const { id } = useParams();
@@ -15,13 +16,20 @@ const MyCourseDetails = () => {
   }, [id, axiosSecure]);
   return (
     <div>
+      <Helmet>
+        <title>My Course Details</title>
+        <meta
+          name=""
+          content=""
+        />
+      </Helmet>
       <div className="max-w-4xl mx-auto my-20 p-6 bg-base-200 rounded-xl shadow-lg">
         <img
-          src={course.courseImage}
-          alt={course.courseTitle}
+          src={course.image}
+          alt={course.title}
           className="rounded-xl w-full h-80 object-cover mb-6"
         />
-        <h2 className="text-3xl font-bold mb-2">{course.courseTitle}</h2>
+        <h2 className="text-3xl font-bold mb-2">{course.title}</h2>
         <p className="text-lg text-gray-700 mb-4">{course.description}</p>
         <div className="flex justify-between items-center">
           <span className="badge badge-primary text-lg">{course.category}</span>

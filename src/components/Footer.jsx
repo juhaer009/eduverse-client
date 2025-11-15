@@ -11,7 +11,7 @@ const Footer = () => {
         <div>
           <div className="flex items-center space-x-2 mb-4">
             <img src={logo} className="w-20 h-18 rounded-2xl" alt="Eduverse logo" />
-            <span className="font-bold text-xl">Eduverse</span>
+            <span className="font-bold text-xl text-pink-600">Eduverse</span>
           </div>
           <p className="text-sm opacity-80 leading-relaxed">
             Empowering learners worldwide with high-quality online courses and a

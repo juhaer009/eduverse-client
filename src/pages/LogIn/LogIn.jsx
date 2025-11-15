@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 const LogIn = () => {
   const { logIn, googleLogIn } = useContext(AuthContext);
   const location = useLocation();
-//   console.log(location)
+  //   console.log(location)
   // console.log(location);
   const navigate = useNavigate();
 
@@ -38,6 +39,10 @@ const LogIn = () => {
   };
   return (
     <div className="hero bg-base-200 min-h-screen">
+      <Helmet>
+        <title>LogIn</title>
+        <meta name="" content="" />
+      </Helmet>
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold">Login now!</h1>
@@ -46,9 +51,19 @@ const LogIn = () => {
           <form onSubmit={handleLogIn} className="card-body">
             <fieldset className="fieldset">
               <label className="label">Email</label>
-              <input type="email" name="email" className="input" placeholder="Email" />
+              <input
+                type="email"
+                name="email"
+                className="input"
+                placeholder="Email"
+              />
               <label className="label">Password</label>
-              <input type="password" name="password" className="input" placeholder="Password" />
+              <input
+                type="password"
+                name="password"
+                className="input"
+                placeholder="Password"
+              />
               <div>
                 <a className="link link-hover">Forgot password?</a>
               </div>
@@ -56,14 +71,21 @@ const LogIn = () => {
             </fieldset>
             <p>
               Don't Have an account?{" "}
-              <Link state={location?.state} to="/register" className="text-secondary">
+              <Link
+                state={location?.state}
+                to="/register"
+                className="text-secondary"
+              >
                 Register
               </Link>
             </p>
           </form>
           <span className="text-center">OR</span>
           {/* Google */}
-          <button onClick={handleGoogleLogIn} className="btn bg-white text-black shadow-2xs border-[#e5e5e5] m-4">
+          <button
+            onClick={handleGoogleLogIn}
+            className="btn bg-white text-black shadow-2xs border-[#e5e5e5] m-4"
+          >
             <svg
               aria-label="Google logo"
               width="16"

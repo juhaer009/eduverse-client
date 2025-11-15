@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { AuthContext } from "../../Provider/AuthProvider";
 import MyCourseCard from "../../components/MyCourseCard/MyCourseCard";
+import { Helmet } from "react-helmet-async";
 
 const MyCourse = () => {
   const { user } = useContext(AuthContext);
@@ -21,6 +22,10 @@ const MyCourse = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>My Course</title>
+        <meta name="" content="" />
+      </Helmet>
       <div className="flex justify-center items-center">
         <h2 className="text-4xl font-bold text-center">
           Courses for :{" "}

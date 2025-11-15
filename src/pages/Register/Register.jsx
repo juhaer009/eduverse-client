@@ -2,13 +2,14 @@ import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
   const [error, setError] = useState("");
   const { createUser, setUser, userProfile, googleLogIn } =
     useContext(AuthContext);
   const location = useLocation();
-//   console.log(location)
+  //   console.log(location)
   const navigate = useNavigate();
 
   const handleregister = (e) => {
@@ -38,7 +39,7 @@ const Register = () => {
           .then(() => {
             setUser({ ...user, displayName: name, photoURL: photo });
             navigate(`${location.state ? location.state : "/"}`);
-            toast("Registered Successfully!!")
+            toast("Registered Successfully!!");
           })
           .catch((error) => {
             console.log(error);
@@ -65,6 +66,10 @@ const Register = () => {
   };
   return (
     <div className="hero bg-base-200 min-h-screen">
+      <Helmet>
+        <title>Register</title>
+        <meta name="" content="" />
+      </Helmet>
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold">Register now!</h1>

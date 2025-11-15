@@ -27,13 +27,13 @@ const MyCourseCard = ({ course, onDelete }) => {
       <div className="card bg-base-100 w-96 shadow-2xl">
         <figure className="px-10 pt-10">
           <img
-            src={course.courseImage}
-            alt={course.courseTitle}
+            src={course.image}
+            alt={course.title}
             className="rounded-xl h-[200px] w-80"
           />
         </figure>
         <div className="card-body items-center text-center">
-          <h2 className="card-title">{course.courseTitle}</h2>
+          <h2 className="card-title">{course.title}</h2>
 
           <div className="card-actions">
             <Link

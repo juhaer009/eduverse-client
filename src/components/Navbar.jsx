@@ -1,10 +1,22 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router";
 import logo from "../assets/eduverse-logo.png";
 import { AuthContext } from "../Provider/AuthProvider";
 import { toast } from "react-toastify";
 
 const Navbar = () => {
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+
+  useEffect(() => {
+    const html = document.querySelector("html");
+    html.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const handleTheme = (checked) => {
+    setTheme(checked ? "dark" : "light");
+  };
+
   const { user, logOut } = useContext(AuthContext);
   const handleLogOut = () => {
     // console.log("user trying to log out")
@@ -79,6 +91,14 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end mr-3">
+        <div className="navbar">
+          <input
+            onChange={(e) => handleTheme(e.target.checked)}
+            type="checkbox"
+            defaultChecked={localStorage.getItem("theme") === "dark"}
+            className="toggle"
+          />
+        </div>
         {user ? (
           <button onClick={handleLogOut} className="btn btn-primary px-10">
             LogOut

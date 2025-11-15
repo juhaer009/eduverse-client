@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet-async";
 
 const AddCourse = () => {
   const { user } = useContext(AuthContext);
@@ -11,8 +12,8 @@ const AddCourse = () => {
     const name = e.target.name.value;
     const email = e.target.email.value;
     const photo = e.target.photo.value;
-    const courseTitle = e.target.title.value;
-    const courseImage = e.target.courseImage.value;
+    const title = e.target.title.value;
+    const image = e.target.courseImage.value;
     const price = parseFloat(e.target.price.value);
     const duration = e.target.duration.value;
     const category = e.target.category.value;
@@ -22,8 +23,8 @@ const AddCourse = () => {
       name,
       email,
       photo,
-      courseTitle,
-      courseImage,
+      title,
+      image,
       price,
       duration,
       category,
@@ -39,6 +40,13 @@ const AddCourse = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Add Course</title>
+        <meta
+          name=""
+          content=""
+        />
+      </Helmet>
       <h2 className="font-semibold text-secondary text-center text-4xl mt-6">
         Add a Course
       </h2>

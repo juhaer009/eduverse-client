@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const CourseDetails = () => {
   const { id } = useParams();
@@ -16,6 +17,10 @@ const CourseDetails = () => {
 
   return (
     <div className="max-w-4xl mx-auto my-20 p-6 bg-base-200 rounded-xl shadow-lg">
+      <Helmet>
+        <title>Course Details</title>
+        <meta name="" content="" />
+      </Helmet>
       <img
         src={course.image}
         alt={course.title}
@@ -30,7 +35,9 @@ const CourseDetails = () => {
       <div className="mt-3 text-sm text-gray-500">
         Duration: {course.duration}
       </div>
-      <Link className="badge badge-primary text-xl font-semibold p-4" to="/">Go Back</Link>
+      <Link className="badge badge-primary text-xl font-semibold p-4" to="/">
+        Go Back
+      </Link>
     </div>
   );
 };
