@@ -10,7 +10,7 @@ const MyCourse = () => {
   const axiosSecure = useAxiosSecure();
   useEffect(() => {
     axiosSecure
-      .get(`http://localhost:3000/mycourses?email=${user?.email}`)
+      .get(`/mycourses?email=${user?.email}`)
       .then((data) => {
         setCourses(data.data);
       });

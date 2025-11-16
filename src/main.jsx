@@ -31,7 +31,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/allcourse",
-        loader: () => fetch("http://localhost:3000/courses"),
+        loader: () => fetch("https://eduverse-server-five.vercel.app/courses"),
         Component: AllCourse,
       },
       {
