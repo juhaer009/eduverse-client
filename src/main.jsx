@@ -19,6 +19,7 @@ import MyCourseDetails from "./pages/MyCourseDetails/MyCourseDetails.jsx";
 import UpdateCourse from "./pages/UpdateCourse/UpdateCourse.jsx";
 import { HelmetProvider } from "react-helmet-async";
 import Error from "./pages/Error/Error.jsx";
+import Profile from "./pages/Profile/Profile.jsx";
 
 const router = createBrowserRouter([
   {
@@ -65,6 +66,14 @@ const router = createBrowserRouter([
       {
         path: "/update-course/:id",
         Component: UpdateCourse,
+      },
+      {
+        path: "/profile",
+        element: (
+          <PrivateRoute>
+            <Profile />
+          </PrivateRoute>
+        ),
       },
     ],
   },
