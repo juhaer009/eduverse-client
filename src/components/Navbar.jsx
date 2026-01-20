@@ -36,6 +36,9 @@ const Navbar = () => {
       <li>
         <NavLink to="/allcourse">All Courses</NavLink>
       </li>
+      <li>
+        <NavLink to="/about">About</NavLink>
+      </li>
     </>
   );
   const privateLinks = (
@@ -45,6 +48,9 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink to="/allcourse">All Courses</NavLink>
+      </li>
+      <li>
+        <NavLink to="/about">About</NavLink>
       </li>
       <li>
         <Link to="/addcourse">Add a course</Link>

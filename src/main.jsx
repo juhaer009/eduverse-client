@@ -20,6 +20,7 @@ import UpdateCourse from "./pages/UpdateCourse/UpdateCourse.jsx";
 import { HelmetProvider } from "react-helmet-async";
 import Error from "./pages/Error/Error.jsx";
 import Profile from "./pages/Profile/Profile.jsx";
+import About from "./pages/About/About.jsx";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
         path: "/allcourse",
         loader: () => fetch("https://eduverse-server-five.vercel.app/courses"),
         Component: AllCourse,
+      },
+      {
+        path: "/about",
+        Component: About,
       },
       {
         path: "/course-details/:id",
