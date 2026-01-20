@@ -44,7 +44,7 @@ const Footer = () => {
                 className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl" 
                 alt="Eduverse logo" 
               />
-              <span className="font-bold text-lg sm:text-xl text-primary">Eduverse</span>
+              <span className="font-bold text-lg sm:text-xl text-pink-500">Eduverse</span>
             </div>
             <p className="text-sm sm:text-base text-base-content/80 leading-relaxed mb-4 sm:mb-6">
               Empowering learners worldwide with high-quality online courses, expert instructors, 

@@ -90,7 +90,7 @@ const Navbar = () => {
             />
             <a className="btn btn-ghost text-sm sm:text-lg lg:text-xl text-secondary font-bold px-1 sm:px-2 lg:px-4 normal-case">
               <span className="hidden xs:inline">Eduverse</span>
-              <span className="xs:hidden">Edu</span>
+              <span className="xs:hidden">Eduverse</span>
             </a>
           </div>
         </div>
