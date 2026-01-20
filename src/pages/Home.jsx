@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Banner from "../components/Banner/Banner";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import FeaturedCourseCard from "../components/FeaturedCourseCard/FeaturedCourseCard";
+import CourseCardSkeleton from "../components/Loading/CourseCardSkeleton";
 import { Helmet } from "react-helmet-async";
 import { 
   FaGraduationCap, 
@@ -277,14 +278,23 @@ const Home = () => {
               Join thousands of students in our most popular courses
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-            {featuredCourses?.map((course) => (
-              <FeaturedCourseCard
-                key={course._id}
-                course={course}
-              />
-            ))}
-          </div>
+          
+          {!featuredCourses ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+              {[...Array(8)].map((_, index) => (
+                <CourseCardSkeleton key={index} />
+              ))}
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+              {featuredCourses?.map((course) => (
+                <FeaturedCourseCard
+                  key={course._id}
+                  course={course}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
